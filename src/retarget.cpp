@@ -1,7 +1,7 @@
 #include "usart.h"
 
 void retarget_init() {
-  init_USART1(115200);
+  init_USART1(9600);
 }
 
 extern "C" int _write (int fd, char *ptr, int len) {

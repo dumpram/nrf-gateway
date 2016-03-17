@@ -23,7 +23,7 @@
 static const uint64_t extAddress = 0xF0F0F0F0E2LL;
 
 /** Test message **/
-static char message[] = "F0F0F0F0D3:TestNRF!\n";
+static char message[] = "<html>JUPI</html>!\n";
 
 /**
  * Function setups RF24 radio. Additionally prints out registers.
@@ -52,13 +52,12 @@ int main() {
     setupRF(rf24);
 
     ETH_BSP_Config();
-
     LwIP_Init();
 
     printf("Setup complete!\r\n");
 
     while (1367) {
-        GPIOD->ODR ^= (1 << 13);
+        //GPIOD->ODR ^= (1 << 13);
         rf24.write(message, sizeof(char) * strlen(message));
         /* check if any packet received */
         if (ETH_CheckFrameReceived()) {

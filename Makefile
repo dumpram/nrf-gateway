@@ -17,6 +17,9 @@ STM_COMMON = lib/stm32
 # Standard peripheral library
 STD_PERIPH_LIB=$(STM_COMMON)/STM32F4xx_StdPeriph_Driver
 
+# FreeRTOS lib
+FREE_RTOS_LIB = lib/FreeRTOS_v6.1.0
+
 # Standard peripheral sources
 STD_PERIPH_SRC = $(STD_PERIPH_LIB)/src/stm32f4xx_spi.c
 STD_PERIPH_SRC += $(STD_PERIPH_LIB)/src/stm32f4xx_tim.c
@@ -25,6 +28,17 @@ STD_PERIPH_SRC += $(STD_PERIPH_LIB)/src/stm32f4xx_rcc.c
 STD_PERIPH_SRC += $(STD_PERIPH_LIB)/src/stm32f4xx_usart.c
 STD_PERIPH_SRC += $(STD_PERIPH_LIB)/src/misc.c
 STD_PERIPH_SRC += $(STD_PERIPH_LIB)/src/stm32f4xx_syscfg.c
+
+# FreeRTOS sources
+FREE_RTOS_SRC = $(FREE_RTOS_LIB)/*.c
+
+# FreeRTOS include
+FREE_RTOS_INC = -I$(FREE_RTOS_LIB)/include
+FREE_RTOS_INC += -I$(FREE_RTOS_LIB)/portable/GCC/ARM_CM3
+
+# FreeRTOS portable source
+FREE_RTOS_SRC += $(FREE_RTOS_LIB)/portable/GCC/ARM_CM3/*.c
+FREE_RTOS_SRC += $(FREE_RTOS_LIB)/portable/MemMang/heap_2.c
 
 # lwIP stack source files
 LWIP_SRC = lib/lwip_v1.3.2/src/api/*.c
@@ -61,7 +75,7 @@ CC=arm-none-eabi-g++
 OBJCOPY=arm-none-eabi-objcopy
 
 # Compiler flags
-CFLAGS  = -g -O2 -Wall -T$(STM_LD) -std=c++11 --specs=nosys.specs -fpermissive
+CFLAGS  = -g -O2 -w -T$(STM_LD) -std=c++11 --specs=nosys.specs -fpermissive
 CFLAGS += -D USE_STDPERIPH_DRIVER -D SERIAL_DEBUG
 CFLAGS += -mlittle-endian -mthumb -mcpu=cortex-m4 -mthumb-interwork
 CFLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16
@@ -77,6 +91,9 @@ CFLAGS += -I$(STM_COMMON)/CMSIS/ST/STM32F4xx/Include
 
 # Include from standard peripheral library
 CFLAGS += -I$(STD_PERIPH_LIB)/inc
+
+# Include FreeRTOS
+CFLAGS += $(FREE_RTOS_INC)
 
 # Size optimization
 CFLAGS+=-fno-exceptions
@@ -96,6 +113,9 @@ SRCS += $(LWIP_SRC)
 
 # Ethernet drive sources
 SRCS += $(STD_ETH_SRC)
+
+# FreeRTOS sources
+SRCS += $(FREE_RTOS_SRC)
 
 .PHONY: proj
 

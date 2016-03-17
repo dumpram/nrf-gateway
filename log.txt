@@ -1,0 +1,1344 @@
+arm-none-eabi-g++ -g -O2 -Wall -Tstm32f4xx_flash.ld -std=c++11 --specs=nosys.specs -fpermissive -D USE_STDPERIPH_DRIVER -D SERIAL_DEBUG -mlittle-endian -mthumb -mcpu=cortex-m4 -mthumb-interwork -mfloat-abi=hard -mfpu=fpv4-sp-d16 -Iinc/ -Ilib/lwip_v1.3.2/port/STM32F4x7/ -Ilib/lwip_v1.3.2/port/STM32F4x7/Standalone/ -Ilib/lwip_v1.3.2/src/netif/ppp/ -Ilib/lwip_v1.3.2/src/include/ipv4/ -Ilib/lwip_v1.3.2/src/include/ipv6/lwip/ -Ilib/lwip_v1.3.2/src/include/lwip/ -Ilib/lwip_v1.3.2/src/include/ -Ilib/stm32/STM32F4x7_ETH_Driver/inc/ -Ilib/stm32/CMSIS/Include -Ilib/stm32/CMSIS/ST/STM32F4xx/Include -Ilib/stm32/STM32F4xx_StdPeriph_Driver/inc -fno-exceptions -fno-builtin -flto -fno-rtti --specs=nano.specs src/compatibility.cpp src/gpio.cpp src/main.cpp src/retarget.cpp src/RF24.cpp src/spi.cpp src/system_stm32f4xx.cpp src/tcp_client.cpp src/usart.cpp src/netconf.c src/stm32f4x7_eth_bsp.c src/tcp_echoclient.c startup_stm32f4xx.s lib/stm32/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.c lib/stm32/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_tim.c lib/stm32/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.c lib/stm32/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c lib/stm32/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.c lib/stm32/STM32F4xx_StdPeriph_Driver/src/misc.c lib/stm32/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c lib/lwip_v1.3.2/src/api/api_lib.c lib/lwip_v1.3.2/src/api/api_msg.c lib/lwip_v1.3.2/src/api/err.c lib/lwip_v1.3.2/src/api/netbuf.c lib/lwip_v1.3.2/src/api/netdb.c lib/lwip_v1.3.2/src/api/netifapi.c lib/lwip_v1.3.2/src/api/sockets.c lib/lwip_v1.3.2/src/api/tcpip.c lib/lwip_v1.3.2/src/core/dhcp.c lib/lwip_v1.3.2/src/core/dns.c lib/lwip_v1.3.2/src/core/init.c lib/lwip_v1.3.2/src/core/mem.c lib/lwip_v1.3.2/src/core/memp.c lib/lwip_v1.3.2/src/core/netif.c lib/lwip_v1.3.2/src/core/pbuf.c lib/lwip_v1.3.2/src/core/raw.c lib/lwip_v1.3.2/src/core/stats.c lib/lwip_v1.3.2/src/core/sys.c lib/lwip_v1.3.2/src/core/tcp.c lib/lwip_v1.3.2/src/core/tcp_in.c lib/lwip_v1.3.2/src/core/tcp_out.c lib/lwip_v1.3.2/src/core/udp.c lib/lwip_v1.3.2/src/netif/etharp.c lib/lwip_v1.3.2/src/netif/loopif.c lib/lwip_v1.3.2/src/netif/slipif.c lib/lwip_v1.3.2/src/netif/ppp/auth.c lib/lwip_v1.3.2/src/netif/ppp/chap.c lib/lwip_v1.3.2/src/netif/ppp/chpms.c lib/lwip_v1.3.2/src/netif/ppp/fsm.c lib/lwip_v1.3.2/src/netif/ppp/ipcp.c lib/lwip_v1.3.2/src/netif/ppp/lcp.c lib/lwip_v1.3.2/src/netif/ppp/magic.c lib/lwip_v1.3.2/src/netif/ppp/md5.c lib/lwip_v1.3.2/src/netif/ppp/pap.c lib/lwip_v1.3.2/src/netif/ppp/ppp.c lib/lwip_v1.3.2/src/netif/ppp/ppp_oe.c lib/lwip_v1.3.2/src/netif/ppp/randm.c lib/lwip_v1.3.2/src/netif/ppp/vj.c lib/lwip_v1.3.2/src/core/ipv4/autoip.c lib/lwip_v1.3.2/src/core/ipv4/icmp.c lib/lwip_v1.3.2/src/core/ipv4/igmp.c lib/lwip_v1.3.2/src/core/ipv4/inet.c lib/lwip_v1.3.2/src/core/ipv4/inet_chksum.c lib/lwip_v1.3.2/src/core/ipv4/ip_addr.c lib/lwip_v1.3.2/src/core/ipv4/ip.c lib/lwip_v1.3.2/src/core/ipv4/ip_frag.c lib/lwip_v1.3.2/src/core/snmp/asn1_dec.c lib/lwip_v1.3.2/src/core/snmp/asn1_enc.c lib/lwip_v1.3.2/src/core/snmp/mib2.c lib/lwip_v1.3.2/src/core/snmp/mib_structs.c lib/lwip_v1.3.2/src/core/snmp/msg_in.c lib/lwip_v1.3.2/src/core/snmp/msg_out.c lib/lwip_v1.3.2/port/STM32F4x7/Standalone/ethernetif.c lib/stm32/STM32F4x7_ETH_Driver/src/stm32f4x7_eth.c -o nrf-gateway.elf
+In file included from lib/lwip_v1.3.2/src/include/ipv4/lwip/ip.h:39:0,
+                 from lib/lwip_v1.3.2/src/include/lwip/tcp.h:42,
+                 from src/main.cpp:19:
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:23: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                       ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                               ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                        ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                                 ^
+In file included from lib/lwip_v1.3.2/src/include/ipv4/lwip/ip.h:39:0,
+                 from lib/lwip_v1.3.2/src/include/lwip/tcp.h:42,
+                 from inc/tcp_client.h:4,
+                 from src/tcp_client.cpp:1:
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:23: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                       ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                               ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                        ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                                 ^
+src/tcp_client.cpp: In function 'void tcp_setup()':
+src/tcp_client.cpp:25:37: warning: invalid conversion from 'err_t (*)() {aka signed char (*)()}' to 'void (*)(void*, err_t) {aka void (*)(void*, signed char)}' [-fpermissive]
+     tcp_err(testpcb, tcpErrorHandler);
+                                     ^
+In file included from inc/tcp_client.h:4:0,
+                 from src/tcp_client.cpp:1:
+lib/lwip_v1.3.2/src/include/lwip/tcp.h:76:18: note:   initializing argument 2 of 'void tcp_err(tcp_pcb*, void (*)(void*, err_t))'
+ void             tcp_err     (struct tcp_pcb *pcb,
+                  ^
+src/tcp_client.cpp:27:38: warning: invalid conversion from 'err_t (*)() {aka signed char (*)()}' to 'err_t (*)(void*, tcp_pcb*, u16_t) {aka signed char (*)(void*, tcp_pcb*, short unsigned int)}' [-fpermissive]
+     tcp_sent(testpcb, tcpSendCallback);
+                                      ^
+In file included from inc/tcp_client.h:4:0,
+                 from src/tcp_client.cpp:1:
+lib/lwip_v1.3.2/src/include/lwip/tcp.h:70:18: note:   initializing argument 2 of 'void tcp_sent(tcp_pcb*, err_t (*)(void*, tcp_pcb*, u16_t))'
+ void             tcp_sent    (struct tcp_pcb *pcb,
+                  ^
+src/tcp_client.cpp: In function 'uint32_t tcp_send_packet()':
+src/tcp_client.cpp:44:20: warning: ISO C++ forbids converting a string constant to 'char*' [-Wwrite-strings]
+     char *string = "HEAD /process.php?data1=12&data2=5 HTTP/1.0\r\nHost: mywebsite.com\r\n\r\n ";
+                    ^
+src/tcp_client.cpp:45:14: warning: unused variable 'len' [-Wunused-variable]
+     uint32_t len = strlen(string);
+              ^
+src/tcp_client.cpp: In function 'err_t tcpRecvCallback(void*, tcp_pcb*, pbuf*, err_t)':
+src/tcp_client.cpp:70:23: error: 'tcp_close_con' was not declared in this scope
+         tcp_close_con();
+                       ^
+In file included from lib/lwip_v1.3.2/src/include/ipv4/lwip/ip.h:39:0,
+                 from lib/lwip_v1.3.2/src/include/lwip/tcp.h:42,
+                 from src/netconf.c:46:
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:23: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                       ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                               ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                        ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                                 ^
+In file included from lib/lwip_v1.3.2/src/include/ipv4/lwip/ip.h:39:0,
+                 from lib/lwip_v1.3.2/src/include/lwip/tcp.h:42,
+                 from src/tcp_echoclient.c:25:
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:23: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                       ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                               ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                        ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                                 ^
+src/tcp_echoclient.c: In function 'err_t tcp_echoclient_connected(void*, tcp_pcb*, err_t)':
+src/tcp_echoclient.c:116:74: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t {aka long unsigned int}' [-Wformat=]
+       sprintf((char*)data, "sending tcp client message %d", message_count);
+                                                                          ^
+In file included from lib/lwip_v1.3.2/src/include/lwip/netif.h:41:0,
+                 from lib/lwip_v1.3.2/src/include/lwip/udp.h:40,
+                 from lib/lwip_v1.3.2/src/core/dhcp.c:77:
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:23: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                       ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                               ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                        ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                                 ^
+lib/lwip_v1.3.2/src/core/dhcp.c:169:45: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("dhcp_handle_nak(netif=%p) %c%c%"U16_F"\n", 
+                                             ^
+lib/lwip_v1.3.2/src/core/dhcp.c:211:62: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("dhcp_check(): set request timeout %"U16_F" msecs\n", msecs));
+                                                              ^
+lib/lwip_v1.3.2/src/core/dhcp.c:226:45: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("dhcp_handle_offer(netif=%p) %c%c%"U16_F"\n",
+                                             ^
+lib/lwip_v1.3.2/src/core/dhcp.c:230:47: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_STATE, ("dhcp_handle_offer(): server 0x%08"X32_F"\n", dhcp->server_ip_addr.addr));
+                                               ^
+lib/lwip_v1.3.2/src/core/dhcp.c:233:47: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_STATE, ("dhcp_handle_offer(): offer for 0x%08"X32_F"\n", dhcp->offered_ip_addr.addr));
+                                               ^
+lib/lwip_v1.3.2/src/core/dhcp.c:257:45: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("dhcp_select(netif=%p) %c%c%"U16_F"\n", (void*)netif, netif->name[0], netif->name[1], (u16_t)netif->num));
+                                             ^
+lib/lwip_v1.3.2/src/core/dhcp.c:306:45: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_STATE, ("dhcp_select(): set request timeout %"U16_F" msecs\n", msecs));
+                                             ^
+lib/lwip_v1.3.2/src/core/dhcp.c:590:62: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("dhcp_start(netif=%p) %c%c%"U16_F"\n", (void*)netif, netif->name[0], netif->name[1], (u16_t)netif->num));
+                                                              ^
+lib/lwip_v1.3.2/src/core/dhcp.c:759:64: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("dhcp_arp_reply(): CHECKING, arp reply for 0x%08"X32_F"\n", addr->addr));
+                                                                ^
+lib/lwip_v1.3.2/src/core/dhcp.c:812:45: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("dhcp_decline(): set request timeout %"U16_F" msecs\n", msecs));
+                                             ^
+lib/lwip_v1.3.2/src/core/dhcp.c:870:62: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("dhcp_discover(): set request timeout %"U16_F" msecs\n", msecs));
+                                                              ^
+lib/lwip_v1.3.2/src/core/dhcp.c:889:45: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("dhcp_bind(netif=%p) %c%c%"U16_F"\n", (void*)netif, netif->name[0], netif->name[1], (u16_t)netif->num));
+                                             ^
+lib/lwip_v1.3.2/src/core/dhcp.c:894:47: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("dhcp_bind(): t1 renewal timer %"U32_F" secs\n", dhcp->offered_t1_renew));
+                                               ^
+lib/lwip_v1.3.2/src/core/dhcp.c:903:64: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("dhcp_bind(): set request timeout %"U32_F" msecs\n", dhcp->offered_t1_renew*1000));
+                                                                ^
+lib/lwip_v1.3.2/src/core/dhcp.c:907:47: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("dhcp_bind(): t2 rebind timer %"U32_F" secs\n", dhcp->offered_t2_rebind));
+                                               ^
+lib/lwip_v1.3.2/src/core/dhcp.c:916:64: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("dhcp_bind(): set request timeout %"U32_F" msecs\n", dhcp->offered_t2_rebind*1000));
+                                                                ^
+lib/lwip_v1.3.2/src/core/dhcp.c:951:45: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_STATE, ("dhcp_bind(): IP: 0x%08"X32_F"\n", dhcp->offered_ip_addr.addr));
+                                             ^
+lib/lwip_v1.3.2/src/core/dhcp.c:953:45: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_STATE, ("dhcp_bind(): SN: 0x%08"X32_F"\n", sn_mask.addr));
+                                             ^
+lib/lwip_v1.3.2/src/core/dhcp.c:955:45: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_STATE, ("dhcp_bind(): GW: 0x%08"X32_F"\n", gw_addr.addr));
+                                             ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1025:62: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("dhcp_renew(): set request timeout %"U16_F" msecs\n", msecs));
+                                                              ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1088:62: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("dhcp_rebind(): set request timeout %"U16_F" msecs\n", msecs));
+                                                              ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1133:62: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("dhcp_reboot(): set request timeout %"U16_F" msecs\n", msecs));
+                                                              ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1179:62: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("dhcp_release(): set request timeout %"U16_F" msecs\n", msecs));
+                                                              ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1325:45: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("dhcp_unfold_reply(): copied %"U16_F" bytes into dhcp->msg_in[]\n",
+                                             ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1332:47: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("dhcp_unfold_reply(): copied %"U16_F" bytes to dhcp->options_in[]\n",
+                                               ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1368:45: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("dhcp_recv(pbuf = %p) from DHCP server %"U16_F".%"U16_F".%"U16_F".%"U16_F" port %"U16_F"\n", (void*)p,
+                                             ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1368:91: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("dhcp_recv(pbuf = %p) from DHCP server %"U16_F".%"U16_F".%"U16_F".%"U16_F" port %"U16_F"\n", (void*)p,
+                                                                                           ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1368:100: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("dhcp_recv(pbuf = %p) from DHCP server %"U16_F".%"U16_F".%"U16_F".%"U16_F" port %"U16_F"\n", (void*)p,
+                                                                                                    ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1368:109: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("dhcp_recv(pbuf = %p) from DHCP server %"U16_F".%"U16_F".%"U16_F".%"U16_F" port %"U16_F"\n", (void*)p,
+                                                                                                             ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1368:118: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("dhcp_recv(pbuf = %p) from DHCP server %"U16_F".%"U16_F".%"U16_F".%"U16_F" port %"U16_F"\n", (void*)p,
+                                                                                                                      ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1371:45: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("pbuf->len = %"U16_F"\n", p->len));
+                                             ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1372:45: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("pbuf->tot_len = %"U16_F"\n", p->tot_len));
+                                             ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1387:72: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_LEVEL_WARNING, ("not a DHCP reply message, but type %"U16_F"\n", (u16_t)reply_msg->op));
+                                                                        ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1394:10: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         ("netif->hwaddr[%"U16_F"]==%02"X16_F" != reply_msg->chaddr[%"U16_F"]==%02"X16_F"\n",
+          ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1394:32: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         ("netif->hwaddr[%"U16_F"]==%02"X16_F" != reply_msg->chaddr[%"U16_F"]==%02"X16_F"\n",
+                                ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1394:45: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         ("netif->hwaddr[%"U16_F"]==%02"X16_F" != reply_msg->chaddr[%"U16_F"]==%02"X16_F"\n",
+                                             ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1394:75: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         ("netif->hwaddr[%"U16_F"]==%02"X16_F" != reply_msg->chaddr[%"U16_F"]==%02"X16_F"\n",
+                                                                           ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1402:8: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       ("transaction id mismatch reply_msg->xid(%"X32_F")!=dhcp->xid(%"X32_F")\n",ntohl(reply_msg->xid),dhcp->xid));
+        ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1402:55: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       ("transaction id mismatch reply_msg->xid(%"X32_F")!=dhcp->xid(%"X32_F")\n",ntohl(reply_msg->xid),dhcp->xid));
+                                                       ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1506:16: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+               ("transaction id xid(%"X32_F")\n", xid));
+                ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1620:51: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("option found at offset %"U16_F" in options\n", offset));
+                                                   ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1624:35: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+          LWIP_DEBUGF(DHCP_DEBUG, ("skipping option %"U16_F" in options\n", options[offset]));
+                                   ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1653:54: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+            LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("option found at offset=%"U16_F"\n", offset));
+                                                      ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1657:53: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+           LWIP_DEBUGF(DHCP_DEBUG | LWIP_DBG_TRACE, ("skipping option %"U16_F"\n", options[offset]));
+                                                     ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1679:28: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG, ("option byte value=%"U16_F"\n", (u16_t)(*ptr)));
+                            ^
+lib/lwip_v1.3.2/src/core/dhcp.c:1718:28: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(DHCP_DEBUG, ("option long value=%"U32_F"\n", value));
+                            ^
+lib/lwip_v1.3.2/src/core/dhcp.c: In function 'err_t dhcp_start(netif*)':
+lib/lwip_v1.3.2/src/core/dhcp.c:604:22: warning: invalid conversion from 'void*' to 'dhcp*' [-fpermissive]
+     dhcp = mem_malloc(sizeof(struct dhcp));
+                      ^
+lib/lwip_v1.3.2/src/core/dhcp.c: In function 'void dhcp_inform(netif*)':
+lib/lwip_v1.3.2/src/core/dhcp.c:668:20: warning: invalid conversion from 'void*' to 'dhcp*' [-fpermissive]
+   dhcp = mem_malloc(sizeof(struct dhcp));
+                    ^
+lib/lwip_v1.3.2/src/core/dhcp.c: In function 'err_t dhcp_unfold_reply(dhcp*, pbuf*)':
+lib/lwip_v1.3.2/src/core/dhcp.c:1310:28: warning: invalid conversion from 'void*' to 'dhcp_msg*' [-fpermissive]
+   dhcp->msg_in = mem_malloc(sizeof(struct dhcp_msg) - DHCP_OPTIONS_LEN);
+                            ^
+In file included from lib/lwip_v1.3.2/src/include/lwip/netif.h:41:0,
+                 from lib/lwip_v1.3.2/src/core/init.c:47:
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:23: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                       ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                               ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                        ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                                 ^
+lib/lwip_v1.3.2/src/core/mem.c:602:52: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(MEM_DEBUG | LWIP_DBG_LEVEL_SERIOUS, ("mem_malloc: could not allocate %"S16_F" bytes\n", (s16_t)size));
+                                                    ^
+lib/lwip_v1.3.2/src/core/mem.c: In function 'void mem_init()':
+lib/lwip_v1.3.2/src/core/mem.c:270:7: warning: invalid conversion from 'void*' to 'u8_t* {aka unsigned char*}' [-fpermissive]
+   ram = LWIP_MEM_ALIGN(ram_heap);
+       ^
+In file included from lib/lwip_v1.3.2/src/include/lwip/netif.h:41:0,
+                 from lib/lwip_v1.3.2/src/include/lwip/udp.h:40,
+                 from lib/lwip_v1.3.2/src/core/memp.c:45:
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:23: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                       ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                               ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                        ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                                 ^
+lib/lwip_v1.3.2/src/core/memp.c: In function 'void memp_init()':
+lib/lwip_v1.3.2/src/core/memp.c:272:8: warning: invalid conversion from 'void*' to 'memp*' [-fpermissive]
+   memp = LWIP_MEM_ALIGN(memp_memory);
+        ^
+In file included from lib/lwip_v1.3.2/src/core/netif.c:42:0:
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:23: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                       ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                               ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                        ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                                 ^
+lib/lwip_v1.3.2/src/core/netif.c:313:63: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(NETIF_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("netif: IP address of interface %c%c set to %"U16_F".%"U16_F".%"U16_F".%"U16_F"\n",
+                                                               ^
+lib/lwip_v1.3.2/src/core/netif.c:313:114: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(NETIF_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("netif: IP address of interface %c%c set to %"U16_F".%"U16_F".%"U16_F".%"U16_F"\n",
+                                                                                                                  ^
+lib/lwip_v1.3.2/src/core/netif.c:313:123: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(NETIF_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("netif: IP address of interface %c%c set to %"U16_F".%"U16_F".%"U16_F".%"U16_F"\n",
+                                                                                                                           ^
+lib/lwip_v1.3.2/src/core/netif.c:313:132: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(NETIF_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("netif: IP address of interface %c%c set to %"U16_F".%"U16_F".%"U16_F".%"U16_F"\n",
+                                                                                                                                    ^
+lib/lwip_v1.3.2/src/core/netif.c:333:63: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(NETIF_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("netif: GW address of interface %c%c set to %"U16_F".%"U16_F".%"U16_F".%"U16_F"\n",
+                                                               ^
+lib/lwip_v1.3.2/src/core/netif.c:333:114: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(NETIF_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("netif: GW address of interface %c%c set to %"U16_F".%"U16_F".%"U16_F".%"U16_F"\n",
+                                                                                                                  ^
+lib/lwip_v1.3.2/src/core/netif.c:333:123: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(NETIF_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("netif: GW address of interface %c%c set to %"U16_F".%"U16_F".%"U16_F".%"U16_F"\n",
+                                                                                                                           ^
+lib/lwip_v1.3.2/src/core/netif.c:333:132: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(NETIF_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("netif: GW address of interface %c%c set to %"U16_F".%"U16_F".%"U16_F".%"U16_F"\n",
+                                                                                                                                    ^
+lib/lwip_v1.3.2/src/core/netif.c:357:63: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(NETIF_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("netif: netmask of interface %c%c set to %"U16_F".%"U16_F".%"U16_F".%"U16_F"\n",
+                                                               ^
+lib/lwip_v1.3.2/src/core/netif.c:357:111: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(NETIF_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("netif: netmask of interface %c%c set to %"U16_F".%"U16_F".%"U16_F".%"U16_F"\n",
+                                                                                                               ^
+lib/lwip_v1.3.2/src/core/netif.c:357:120: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(NETIF_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("netif: netmask of interface %c%c set to %"U16_F".%"U16_F".%"U16_F".%"U16_F"\n",
+                                                                                                                        ^
+lib/lwip_v1.3.2/src/core/netif.c:357:129: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(NETIF_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("netif: netmask of interface %c%c set to %"U16_F".%"U16_F".%"U16_F".%"U16_F"\n",
+                                                                                                                                 ^
+lib/lwip_v1.3.2/src/core/pbuf.c:187:45: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(PBUF_DEBUG | LWIP_DBG_TRACE, ("pbuf_alloc(length=%"U16_F")\n", length));
+                                             ^
+lib/lwip_v1.3.2/src/core/pbuf.c:322:45: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(PBUF_DEBUG | LWIP_DBG_TRACE, ("pbuf_alloc(length=%"U16_F") == %p\n", length, (void *)p));
+                                             ^
+lib/lwip_v1.3.2/src/core/pbuf.c:491:45: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(PBUF_DEBUG | LWIP_DBG_TRACE, ("pbuf_header: old %p new %p (%"S16_F")\n",
+                                             ^
+lib/lwip_v1.3.2/src/core/pbuf.c:589:50: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF( PBUF_DEBUG | LWIP_DBG_TRACE, ("pbuf_free: %p has ref %"U16_F", ending here.\n", (void *)p, ref));
+                                                  ^
+lib/lwip_v1.3.2/src/core/pbuf.c: In function 'pbuf* pbuf_alloc(pbuf_layer, u16_t, pbuf_type)':
+lib/lwip_v1.3.2/src/core/pbuf.c:214:20: warning: invalid conversion from 'void*' to 'pbuf*' [-fpermissive]
+     p = memp_malloc(MEMP_PBUF_POOL);
+                    ^
+lib/lwip_v1.3.2/src/core/pbuf.c:247:22: warning: invalid conversion from 'void*' to 'pbuf*' [-fpermissive]
+       q = memp_malloc(MEMP_PBUF_POOL);
+                      ^
+lib/lwip_v1.3.2/src/core/pbuf.c:301:20: warning: invalid conversion from 'void*' to 'pbuf*' [-fpermissive]
+     p = memp_malloc(MEMP_PBUF);
+                    ^
+lib/lwip_v1.3.2/src/core/pbuf.c: In function 'void pbuf_realloc(pbuf*, u16_t)':
+lib/lwip_v1.3.2/src/core/pbuf.c:386:20: warning: invalid conversion from 'void*' to 'pbuf*' [-fpermissive]
+     q = mem_realloc(q, (u8_t *)q->payload - (u8_t *)q + rem_len);
+                    ^
+In file included from lib/lwip_v1.3.2/src/core/raw.c:48:0:
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:23: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                       ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                               ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                        ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                                 ^
+lib/lwip_v1.3.2/src/core/raw.c:238:54: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(RAW_DEBUG | LWIP_DBG_LEVEL_WARNING, ("raw_sendto: No route to 0x%"X32_F"\n", ipaddr->addr));
+                                                      ^
+lib/lwip_v1.3.2/src/core/raw.c: In function 'u8_t raw_input(pbuf*, netif*)':
+lib/lwip_v1.3.2/src/core/raw.c:87:14: warning: invalid conversion from 'void*' to 'ip_hdr*' [-fpermissive]
+   iphdr = p->payload;
+              ^
+lib/lwip_v1.3.2/src/core/raw.c: In function 'raw_pcb* raw_new(u8_t)':
+lib/lwip_v1.3.2/src/core/raw.c:340:20: warning: invalid conversion from 'void*' to 'raw_pcb*' [-fpermissive]
+   pcb = memp_malloc(MEMP_RAW_PCB);
+                    ^
+In file included from lib/lwip_v1.3.2/src/include/lwip/netif.h:41:0,
+                 from lib/lwip_v1.3.2/src/include/lwip/snmp.h:37,
+                 from lib/lwip_v1.3.2/src/core/tcp.c:50:
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:23: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                       ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                               ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                        ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                                 ^
+lib/lwip_v1.3.2/src/core/tcp.c:333:27: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_DEBUG, ("tcp_bind: bind to port %"U16_F"\n", port));
+                           ^
+lib/lwip_v1.3.2/src/core/tcp.c:458:27: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_DEBUG, ("tcp_recved: recveived %"U16_F" bytes, wnd %"U16_F" (%"U16_F").\n",
+                           ^
+lib/lwip_v1.3.2/src/core/tcp.c:458:57: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_DEBUG, ("tcp_recved: recveived %"U16_F" bytes, wnd %"U16_F" (%"U16_F").\n",
+                                                         ^
+lib/lwip_v1.3.2/src/core/tcp.c:458:77: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_DEBUG, ("tcp_recved: recveived %"U16_F" bytes, wnd %"U16_F" (%"U16_F").\n",
+                                                                             ^
+lib/lwip_v1.3.2/src/core/tcp.c:522:27: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_DEBUG, ("tcp_connect to port %"U16_F"\n", port));
+                           ^
+lib/lwip_v1.3.2/src/core/tcp.c:630:39: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+           LWIP_DEBUGF(TCP_RTO_DEBUG, ("tcp_slowtmr: rtime %"S16_F
+                                       ^
+lib/lwip_v1.3.2/src/core/tcp.c:631:39: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                                       " pcb->rto %"S16_F"\n",
+                                       ^
+lib/lwip_v1.3.2/src/core/tcp.c:650:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+           LWIP_DEBUGF(TCP_CWND_DEBUG, ("tcp_slowtmr: cwnd %"U16_F
+                                        ^
+lib/lwip_v1.3.2/src/core/tcp.c:651:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                                        " ssthresh %"U16_F"\n",
+                                        ^
+lib/lwip_v1.3.2/src/core/tcp.c:682:33: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         LWIP_DEBUGF(TCP_DEBUG, ("tcp_slowtmr: KEEPALIVE timeout. Aborting connection to %"U16_F".%"U16_F".%"U16_F".%"U16_F".\n",
+                                 ^
+lib/lwip_v1.3.2/src/core/tcp.c:682:96: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         LWIP_DEBUGF(TCP_DEBUG, ("tcp_slowtmr: KEEPALIVE timeout. Aborting connection to %"U16_F".%"U16_F".%"U16_F".%"U16_F".\n",
+                                                                                                ^
+lib/lwip_v1.3.2/src/core/tcp.c:682:105: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         LWIP_DEBUGF(TCP_DEBUG, ("tcp_slowtmr: KEEPALIVE timeout. Aborting connection to %"U16_F".%"U16_F".%"U16_F".%"U16_F".\n",
+                                                                                                         ^
+lib/lwip_v1.3.2/src/core/tcp.c:682:114: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         LWIP_DEBUGF(TCP_DEBUG, ("tcp_slowtmr: KEEPALIVE timeout. Aborting connection to %"U16_F".%"U16_F".%"U16_F".%"U16_F".\n",
+                                                                                                                  ^
+lib/lwip_v1.3.2/src/core/tcp.c:966:29: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(TCP_DEBUG, ("tcp_kill_prio: killing oldest PCB %p (%"S32_F")\n",
+                             ^
+lib/lwip_v1.3.2/src/core/tcp.c:992:29: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(TCP_DEBUG, ("tcp_kill_timewait: killing oldest TIME-WAIT PCB %p (%"S32_F")\n",
+                             ^
+lib/lwip_v1.3.2/src/core/tcp.c: In function 'tcp_pcb* tcp_listen_with_backlog(tcp_pcb*, u8_t)':
+lib/lwip_v1.3.2/src/core/tcp.c:377:21: warning: invalid conversion from 'void*' to 'tcp_pcb_listen*' [-fpermissive]
+   lpcb = memp_malloc(MEMP_TCP_PCB_LISTEN);
+                     ^
+lib/lwip_v1.3.2/src/core/tcp.c: In function 'tcp_pcb* tcp_alloc(u8_t)':
+lib/lwip_v1.3.2/src/core/tcp.c:1010:20: warning: invalid conversion from 'void*' to 'tcp_pcb*' [-fpermissive]
+   pcb = memp_malloc(MEMP_TCP_PCB);
+                    ^
+lib/lwip_v1.3.2/src/core/tcp.c:1016:22: warning: invalid conversion from 'void*' to 'tcp_pcb*' [-fpermissive]
+     pcb = memp_malloc(MEMP_TCP_PCB);
+                      ^
+lib/lwip_v1.3.2/src/core/tcp.c:1022:24: warning: invalid conversion from 'void*' to 'tcp_pcb*' [-fpermissive]
+       pcb = memp_malloc(MEMP_TCP_PCB);
+                        ^
+In file included from lib/lwip_v1.3.2/src/include/ipv4/lwip/ip.h:39:0,
+                 from lib/lwip_v1.3.2/src/include/lwip/tcp.h:42,
+                 from lib/lwip_v1.3.2/src/core/tcp_in.c:48:
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:23: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                       ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                               ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                        ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                                 ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:115:35: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(TCP_INPUT_DEBUG, ("tcp_input: short packet (%"U16_F" bytes) discarded\n", p->tot_len));
+                                   ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:405:29: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(TCP_DEBUG, ("TCP connection request %"U16_F" -> %"U16_F".\n", tcphdr->src, tcphdr->dest));
+                             ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:405:60: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(TCP_DEBUG, ("TCP connection request %"U16_F" -> %"U16_F".\n", tcphdr->src, tcphdr->dest));
+                                                            ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:554:37: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(TCP_INPUT_DEBUG, ("tcp_process: unacceptable reset seqno %"U32_F" rcv_nxt %"U32_F"\n",
+                                     ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:554:83: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(TCP_INPUT_DEBUG, ("tcp_process: unacceptable reset seqno %"U32_F" rcv_nxt %"U32_F"\n",
+                                                                                   ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:556:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(TCP_DEBUG, ("tcp_process: unacceptable reset seqno %"U32_F" rcv_nxt %"U32_F"\n",
+                               ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:556:77: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(TCP_DEBUG, ("tcp_process: unacceptable reset seqno %"U32_F" rcv_nxt %"U32_F"\n",
+                                                                             ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:577:35: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(TCP_INPUT_DEBUG, ("SYN-SENT: ackno %"U32_F" pcb->snd_nxt %"U32_F" unacked %"U32_F"\n", ackno,
+                                   ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:577:59: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(TCP_INPUT_DEBUG, ("SYN-SENT: ackno %"U32_F" pcb->snd_nxt %"U32_F" unacked %"U32_F"\n", ackno,
+                                                           ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:577:81: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(TCP_INPUT_DEBUG, ("SYN-SENT: ackno %"U32_F" pcb->snd_nxt %"U32_F" unacked %"U32_F"\n", ackno,
+                                                                                 ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:601:36: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(TCP_QLEN_DEBUG, ("tcp_process: SYN-SENT --queuelen %"U16_F"\n", (u16_t)pcb->snd_queuelen));
+                                    ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:634:33: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         LWIP_DEBUGF(TCP_DEBUG, ("TCP connection established %"U16_F" -> %"U16_F".\n", inseg.tcphdr->src, inseg.tcphdr->dest));
+                                 ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:634:68: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         LWIP_DEBUGF(TCP_DEBUG, ("TCP connection established %"U16_F" -> %"U16_F".\n", inseg.tcphdr->src, inseg.tcphdr->dest));
+                                                                    ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:688:12: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+           ("TCP connection closed: FIN_WAIT_1 %"U16_F" -> %"U16_F".\n", inseg.tcphdr->src, inseg.tcphdr->dest));
+            ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:688:54: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+           ("TCP connection closed: FIN_WAIT_1 %"U16_F" -> %"U16_F".\n", inseg.tcphdr->src, inseg.tcphdr->dest));
+                                                      ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:705:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(TCP_DEBUG, ("TCP connection closed: FIN_WAIT_2 %"U16_F" -> %"U16_F".\n", inseg.tcphdr->src, inseg.tcphdr->dest));
+                               ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:705:73: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(TCP_DEBUG, ("TCP connection closed: FIN_WAIT_2 %"U16_F" -> %"U16_F".\n", inseg.tcphdr->src, inseg.tcphdr->dest));
+                                                                         ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:716:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(TCP_DEBUG, ("TCP connection closed: CLOSING %"U16_F" -> %"U16_F".\n", inseg.tcphdr->src, inseg.tcphdr->dest));
+                               ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:716:70: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(TCP_DEBUG, ("TCP connection closed: CLOSING %"U16_F" -> %"U16_F".\n", inseg.tcphdr->src, inseg.tcphdr->dest));
+                                                                      ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:726:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(TCP_DEBUG, ("TCP connection closed: LAST_ACK %"U16_F" -> %"U16_F".\n", inseg.tcphdr->src, inseg.tcphdr->dest));
+                               ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:726:71: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(TCP_DEBUG, ("TCP connection closed: LAST_ACK %"U16_F" -> %"U16_F".\n", inseg.tcphdr->src, inseg.tcphdr->dest));
+                                                                       ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:817:35: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(TCP_WND_DEBUG, ("tcp_receive: window update %"U16_F"\n", pcb->snd_wnd));
+                                   ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:915:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+           LWIP_DEBUGF(TCP_CWND_DEBUG, ("tcp_receive: slow start cwnd %"U16_F"\n", pcb->cwnd));
+                                        ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:921:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+           LWIP_DEBUGF(TCP_CWND_DEBUG, ("tcp_receive: congestion avoidance cwnd %"U16_F"\n", pcb->cwnd));
+                                        ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:924:37: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(TCP_INPUT_DEBUG, ("tcp_receive: ACK for %"U32_F", unacked->seqno %"U32_F":%"U32_F"\n",
+                                     ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:924:66: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(TCP_INPUT_DEBUG, ("tcp_receive: ACK for %"U32_F", unacked->seqno %"U32_F":%"U32_F"\n",
+                                                                  ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:924:91: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(TCP_INPUT_DEBUG, ("tcp_receive: ACK for %"U32_F", unacked->seqno %"U32_F":%"U32_F"\n",
+                                                                                           ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:936:39: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         LWIP_DEBUGF(TCP_INPUT_DEBUG, ("tcp_receive: removing %"U32_F":%"U32_F" from pcb->unacked\n",
+                                       ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:936:69: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         LWIP_DEBUGF(TCP_INPUT_DEBUG, ("tcp_receive: removing %"U32_F":%"U32_F" from pcb->unacked\n",
+                                                                     ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:944:38: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         LWIP_DEBUGF(TCP_QLEN_DEBUG, ("tcp_receive: queuelen %"U16_F" ... ", (u16_t)pcb->snd_queuelen));
+                                      ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:954:38: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         LWIP_DEBUGF(TCP_QLEN_DEBUG, ("%"U16_F" (after freeing unacked)\n", (u16_t)pcb->snd_queuelen));
+                                      ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:983:37: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(TCP_INPUT_DEBUG, ("tcp_receive: removing %"U32_F":%"U32_F" from pcb->unsent\n",
+                                     ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:983:67: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(TCP_INPUT_DEBUG, ("tcp_receive: removing %"U32_F":%"U32_F" from pcb->unsent\n",
+                                                                   ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:989:36: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(TCP_QLEN_DEBUG, ("tcp_receive: queuelen %"U16_F" ... ", (u16_t)pcb->snd_queuelen));
+                                    ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:997:36: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(TCP_QLEN_DEBUG, ("%"U16_F" (after freeing unsent)\n", (u16_t)pcb->snd_queuelen));
+                                    ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:1005:33: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(TCP_RTO_DEBUG, ("tcp_receive: pcb->rttest %"U32_F" rtseq %"U32_F" ackno %"U32_F"\n",
+                                 ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:1005:66: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(TCP_RTO_DEBUG, ("tcp_receive: pcb->rttest %"U32_F" rtseq %"U32_F" ackno %"U32_F"\n",
+                                                                  ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:1005:81: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(TCP_RTO_DEBUG, ("tcp_receive: pcb->rttest %"U32_F" rtseq %"U32_F" ackno %"U32_F"\n",
+                                                                                 ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:1016:35: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(TCP_RTO_DEBUG, ("tcp_receive: experienced rtt %"U16_F" ticks (%"U16_F" msec).\n",
+                                   ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:1016:72: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(TCP_RTO_DEBUG, ("tcp_receive: experienced rtt %"U16_F" ticks (%"U16_F" msec).\n",
+                                                                        ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:1029:35: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(TCP_RTO_DEBUG, ("tcp_receive: RTO %"U16_F" (%"U16_F" milliseconds)\n",
+                                   ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:1029:60: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(TCP_RTO_DEBUG, ("tcp_receive: RTO %"U16_F" (%"U16_F" milliseconds)\n",
+                                                            ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:1127:39: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         LWIP_DEBUGF(TCP_INPUT_DEBUG, ("tcp_receive: duplicate seqno %"U32_F"\n", seqno));
+                                       ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:1146:24: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                        "seqno %"U32_F" len %"U32_F" right edge %"U32_F"\n",
+                        ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:1146:38: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                        "seqno %"U32_F" len %"U32_F" right edge %"U32_F"\n",
+                                      ^
+lib/lwip_v1.3.2/src/core/tcp_in.c:1146:51: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                        "seqno %"U32_F" len %"U32_F" right edge %"U32_F"\n",
+                                                   ^
+lib/lwip_v1.3.2/src/core/tcp_in.c: In function 'void tcp_input(pbuf*, netif*)':
+lib/lwip_v1.3.2/src/core/tcp_in.c:105:14: warning: invalid conversion from 'void*' to 'ip_hdr*' [-fpermissive]
+   iphdr = p->payload;
+              ^
+In file included from lib/lwip_v1.3.2/src/include/ipv4/lwip/ip.h:39:0,
+                 from lib/lwip_v1.3.2/src/include/lwip/tcp.h:42,
+                 from lib/lwip_v1.3.2/src/core/tcp_out.c:45:
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:23: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                       ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                               ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                        ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                                 ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:118:34: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_OUTPUT_DEBUG, ("tcp_write(pcb=%p, data=%p, len=%"U16_F", apiflags=%"U16_F")\n", (void *)pcb,
+                                  ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:118:73: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_OUTPUT_DEBUG, ("tcp_write(pcb=%p, data=%p, len=%"U16_F", apiflags=%"U16_F")\n", (void *)pcb,
+                                                                         ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:167:16: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+               ("tcp_enqueue(pcb=%p, arg=%p, len=%"U16_F", flags=%"X16_F", apiflags=%"U16_F")\n",
+                ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:167:56: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+               ("tcp_enqueue(pcb=%p, arg=%p, len=%"U16_F", flags=%"X16_F", apiflags=%"U16_F")\n",
+                                                        ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:167:72: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+               ("tcp_enqueue(pcb=%p, arg=%p, len=%"U16_F", flags=%"X16_F", apiflags=%"U16_F")\n",
+                                                                        ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:178:8: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       ("tcp_enqueue: too much data (len=%"U16_F" > snd_buf=%"U16_F")\n", len, pcb->snd_buf));
+        ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:178:48: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       ("tcp_enqueue: too much data (len=%"U16_F" > snd_buf=%"U16_F")\n", len, pcb->snd_buf));
+                                                ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:191:32: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_QLEN_DEBUG, ("tcp_enqueue: queuelen: %"U16_F"\n", (u16_t)pcb->snd_queuelen));
+                                ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:199:8: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       ("tcp_enqueue: too long queue %"U16_F" (max %"U16_F")\n", queuelen, TCP_SND_QUEUELEN));
+        ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:199:44: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       ("tcp_enqueue: too long queue %"U16_F" (max %"U16_F")\n", queuelen, TCP_SND_QUEUELEN));
+                                            ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:249:22: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                     ("tcp_enqueue : could not allocate memory for pbuf copy size %"U16_F"\n", seglen));
+                      ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:299:10: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         ("tcp_enqueue: queue too long %"U16_F" (%"U16_F")\n", queuelen, TCP_SND_QUEUELEN));
+          ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:299:46: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         ("tcp_enqueue: queue too long %"U16_F" (%"U16_F")\n", queuelen, TCP_SND_QUEUELEN));
+                                              ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:323:53: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(TCP_OUTPUT_DEBUG | LWIP_DBG_TRACE, ("tcp_enqueue: queueing %"U32_F":%"U32_F" (0x%"X16_F")\n",
+                                                     ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:323:83: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(TCP_OUTPUT_DEBUG | LWIP_DBG_TRACE, ("tcp_enqueue: queueing %"U32_F":%"U32_F" (0x%"X16_F")\n",
+                                                                                   ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:323:92: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(TCP_OUTPUT_DEBUG | LWIP_DBG_TRACE, ("tcp_enqueue: queueing %"U32_F":%"U32_F" (0x%"X16_F")\n",
+                                                                                            ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:382:70: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(TCP_OUTPUT_DEBUG | LWIP_DBG_TRACE | LWIP_DBG_STATE, ("tcp_enqueue: chaining segments, new len %"U16_F"\n", useg->len));
+                                                                      ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:412:32: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_QLEN_DEBUG, ("tcp_enqueue: %"S16_F" (after enqueued)\n", pcb->snd_queuelen));
+                                ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:436:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_QLEN_DEBUG | LWIP_DBG_STATE, ("tcp_enqueue: %"S16_F" (with mem err)\n", pcb->snd_queuelen));
+                                                 ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:479:16: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+               ("tcp_output: sending ACK for %"U32_F"\n", pcb->rcv_nxt));
+                ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:718:33: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(TCP_RTO_DEBUG, ("tcp_output_segment: rtseq %"U32_F"\n", pcb->rtseq));
+                                 ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:720:34: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_OUTPUT_DEBUG, ("tcp_output_segment: %"U32_F":%"U32_F"\n",
+                                  ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:720:62: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_OUTPUT_DEBUG, ("tcp_output_segment: %"U32_F":%"U32_F"\n",
+                                                              ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:804:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_RST_DEBUG, ("tcp_rst: seqno %"U32_F" ackno %"U32_F".\n", seqno, ackno));
+                               ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:804:54: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_RST_DEBUG, ("tcp_rst: seqno %"U32_F" ackno %"U32_F".\n", seqno, ackno));
+                                                      ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:895:18: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                 ("tcp_receive: dupacks %"U16_F" (%"U32_F
+                  ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:895:47: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                 ("tcp_receive: dupacks %"U16_F" (%"U32_F
+                                               ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:896:18: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                  "), fast retransmit %"U32_F"\n",
+                  ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:911:20: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                   ("tcp_receive: The minimum value for ssthresh %"U16_F
+                    ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:912:20: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                    " should be min 2 mss %"U16_F"...\n",
+                    ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:937:27: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_DEBUG, ("tcp_keepalive: sending KEEPALIVE probe to %"U16_F".%"U16_F".%"U16_F".%"U16_F"\n",
+                           ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:937:77: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_DEBUG, ("tcp_keepalive: sending KEEPALIVE probe to %"U16_F".%"U16_F".%"U16_F".%"U16_F"\n",
+                                                                             ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:937:86: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_DEBUG, ("tcp_keepalive: sending KEEPALIVE probe to %"U16_F".%"U16_F".%"U16_F".%"U16_F"\n",
+                                                                                      ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:937:95: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_DEBUG, ("tcp_keepalive: sending KEEPALIVE probe to %"U16_F".%"U16_F".%"U16_F".%"U16_F"\n",
+                                                                                               ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:941:27: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_DEBUG, ("tcp_keepalive: tcp_ticks %"U32_F"   pcb->tmr %"U32_F" pcb->keep_cnt_sent %"U16_F"\n", 
+                           ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:941:60: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_DEBUG, ("tcp_keepalive: tcp_ticks %"U32_F"   pcb->tmr %"U32_F" pcb->keep_cnt_sent %"U16_F"\n", 
+                                                            ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:941:80: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_DEBUG, ("tcp_keepalive: tcp_ticks %"U32_F"   pcb->tmr %"U32_F" pcb->keep_cnt_sent %"U16_F"\n", 
+                                                                                ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:972:27: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_DEBUG, ("tcp_keepalive: seqno %"U32_F" ackno %"U32_F".\n",
+                           ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:972:56: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_DEBUG, ("tcp_keepalive: seqno %"U32_F" ackno %"U32_F".\n",
+                                                        ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:996:21: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                U16_F".%"U16_F".%"U16_F".%"U16_F"\n",
+                     ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:996:30: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                U16_F".%"U16_F".%"U16_F".%"U16_F"\n",
+                              ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:996:39: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                U16_F".%"U16_F".%"U16_F".%"U16_F"\n",
+                                       ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:1001:16: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+               ("tcp_zero_window_probe: tcp_ticks %"U32_F
+                ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:1002:16: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                "   pcb->tmr %"U32_F" pcb->keep_cnt_sent %"U16_F"\n", 
+                ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:1002:36: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                "   pcb->tmr %"U32_F" pcb->keep_cnt_sent %"U16_F"\n", 
+                                    ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:1050:27: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(TCP_DEBUG, ("tcp_zero_window_probe: seqno %"U32_F
+                           ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:1051:27: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                           " ackno %"U32_F".\n",
+                           ^
+lib/lwip_v1.3.2/src/core/tcp_out.c: In function 'tcp_hdr* tcp_output_set_header(tcp_pcb*, pbuf*, int, u32_t)':
+lib/lwip_v1.3.2/src/core/tcp_out.c:66:31: warning: invalid conversion from 'void*' to 'tcp_hdr*' [-fpermissive]
+   struct tcp_hdr *tcphdr = p->payload;
+                               ^
+lib/lwip_v1.3.2/src/core/tcp_out.c: In function 'err_t tcp_enqueue(tcp_pcb*, void*, u16_t, u8_t, u8_t, u8_t)':
+lib/lwip_v1.3.2/src/core/tcp_out.c:221:22: warning: invalid conversion from 'void*' to 'tcp_seg*' [-fpermissive]
+     seg = memp_malloc(MEMP_TCP_SEG);
+                      ^
+lib/lwip_v1.3.2/src/core/tcp_out.c:311:27: warning: invalid conversion from 'void*' to 'tcp_hdr*' [-fpermissive]
+     seg->tcphdr = seg->p->payload;
+                           ^
+lib/lwip_v1.3.2/src/core/tcp_out.c: In function 'err_t tcp_send_empty_ack(tcp_pcb*)':
+lib/lwip_v1.3.2/src/core/tcp_out.c:465:19: warning: variable 'tcphdr' set but not used [-Wunused-but-set-variable]
+   struct tcp_hdr *tcphdr;
+                   ^
+lib/lwip_v1.3.2/src/core/tcp_out.c: In function 'void tcp_rst(u32_t, u32_t, ip_addr*, ip_addr*, u16_t, u16_t)':
+lib/lwip_v1.3.2/src/core/tcp_out.c:784:15: warning: invalid conversion from 'void*' to 'tcp_hdr*' [-fpermissive]
+   tcphdr = p->payload;
+               ^
+lib/lwip_v1.3.2/src/core/tcp_out.c: In function 'void tcp_keepalive(tcp_pcb*)':
+lib/lwip_v1.3.2/src/core/tcp_out.c:935:19: warning: variable 'tcphdr' set but not used [-Wunused-but-set-variable]
+   struct tcp_hdr *tcphdr;
+                   ^
+In file included from lib/lwip_v1.3.2/src/include/lwip/netif.h:41:0,
+                 from lib/lwip_v1.3.2/src/include/lwip/udp.h:40,
+                 from lib/lwip_v1.3.2/src/core/udp.c:53:
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:23: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                       ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                               ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                        ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                                 ^
+lib/lwip_v1.3.2/src/core/udp.c:106:18: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                 ("udp_input: short UDP datagram (%"U16_F" bytes) discarded\n", p->tot_len));
+                  ^
+lib/lwip_v1.3.2/src/core/udp.c:119:27: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(UDP_DEBUG, ("udp_input: received datagram of length %"U16_F"\n", p->tot_len));
+                           ^
+lib/lwip_v1.3.2/src/core/udp.c:129:16: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+               ("udp (%"U16_F".%"U16_F".%"U16_F".%"U16_F", %"U16_F") <-- "
+                ^
+lib/lwip_v1.3.2/src/core/udp.c:129:29: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+               ("udp (%"U16_F".%"U16_F".%"U16_F".%"U16_F", %"U16_F") <-- "
+                             ^
+lib/lwip_v1.3.2/src/core/udp.c:129:38: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+               ("udp (%"U16_F".%"U16_F".%"U16_F".%"U16_F", %"U16_F") <-- "
+                                      ^
+lib/lwip_v1.3.2/src/core/udp.c:129:47: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+               ("udp (%"U16_F".%"U16_F".%"U16_F".%"U16_F", %"U16_F") <-- "
+                                               ^
+lib/lwip_v1.3.2/src/core/udp.c:129:56: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+               ("udp (%"U16_F".%"U16_F".%"U16_F".%"U16_F", %"U16_F") <-- "
+                                                        ^
+lib/lwip_v1.3.2/src/core/udp.c:130:16: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                "(%"U16_F".%"U16_F".%"U16_F".%"U16_F", %"U16_F")\n",
+                ^
+lib/lwip_v1.3.2/src/core/udp.c:130:25: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                "(%"U16_F".%"U16_F".%"U16_F".%"U16_F", %"U16_F")\n",
+                         ^
+lib/lwip_v1.3.2/src/core/udp.c:130:34: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                "(%"U16_F".%"U16_F".%"U16_F".%"U16_F", %"U16_F")\n",
+                                  ^
+lib/lwip_v1.3.2/src/core/udp.c:130:43: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                "(%"U16_F".%"U16_F".%"U16_F".%"U16_F", %"U16_F")\n",
+                                           ^
+lib/lwip_v1.3.2/src/core/udp.c:130:52: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                "(%"U16_F".%"U16_F".%"U16_F".%"U16_F", %"U16_F")\n",
+                                                    ^
+lib/lwip_v1.3.2/src/core/udp.c:167:20: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                   ("pcb (%"U16_F".%"U16_F".%"U16_F".%"U16_F", %"U16_F") --- "
+                    ^
+lib/lwip_v1.3.2/src/core/udp.c:167:33: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                   ("pcb (%"U16_F".%"U16_F".%"U16_F".%"U16_F", %"U16_F") --- "
+                                 ^
+lib/lwip_v1.3.2/src/core/udp.c:167:42: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                   ("pcb (%"U16_F".%"U16_F".%"U16_F".%"U16_F", %"U16_F") --- "
+                                          ^
+lib/lwip_v1.3.2/src/core/udp.c:167:51: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                   ("pcb (%"U16_F".%"U16_F".%"U16_F".%"U16_F", %"U16_F") --- "
+                                                   ^
+lib/lwip_v1.3.2/src/core/udp.c:167:60: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                   ("pcb (%"U16_F".%"U16_F".%"U16_F".%"U16_F", %"U16_F") --- "
+                                                            ^
+lib/lwip_v1.3.2/src/core/udp.c:168:20: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                    "(%"U16_F".%"U16_F".%"U16_F".%"U16_F", %"U16_F")\n",
+                    ^
+lib/lwip_v1.3.2/src/core/udp.c:168:29: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                    "(%"U16_F".%"U16_F".%"U16_F".%"U16_F", %"U16_F")\n",
+                             ^
+lib/lwip_v1.3.2/src/core/udp.c:168:38: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                    "(%"U16_F".%"U16_F".%"U16_F".%"U16_F", %"U16_F")\n",
+                                      ^
+lib/lwip_v1.3.2/src/core/udp.c:168:47: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                    "(%"U16_F".%"U16_F".%"U16_F".%"U16_F", %"U16_F")\n",
+                                               ^
+lib/lwip_v1.3.2/src/core/udp.c:168:56: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+                    "(%"U16_F".%"U16_F".%"U16_F".%"U16_F", %"U16_F")\n",
+                                                        ^
+lib/lwip_v1.3.2/src/core/udp.c:383:54: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(UDP_DEBUG | LWIP_DBG_LEVEL_SERIOUS, ("udp_send: No route to 0x%"X32_F"\n", dst_ip->addr));
+                                                      ^
+lib/lwip_v1.3.2/src/core/udp.c:487:27: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(UDP_DEBUG, ("udp_send: sending datagram of length %"U16_F"\n", q->tot_len));
+                           ^
+lib/lwip_v1.3.2/src/core/udp.c:530:29: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(UDP_DEBUG, ("udp_send: UDP packet length %"U16_F"\n", q->tot_len));
+                             ^
+lib/lwip_v1.3.2/src/core/udp.c:540:29: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(UDP_DEBUG, ("udp_send: UDP checksum 0x%04"X16_F"\n", udphdr->chksum));
+                             ^
+lib/lwip_v1.3.2/src/core/udp.c:593:44: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(UDP_DEBUG | LWIP_DBG_TRACE, (", port = %"U16_F")\n", port));
+                                            ^
+lib/lwip_v1.3.2/src/core/udp.c:661:16: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+               ("udp_bind: bound to %"U16_F".%"U16_F".%"U16_F".%"U16_F", port %"U16_F"\n",
+                ^
+lib/lwip_v1.3.2/src/core/udp.c:661:43: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+               ("udp_bind: bound to %"U16_F".%"U16_F".%"U16_F".%"U16_F", port %"U16_F"\n",
+                                           ^
+lib/lwip_v1.3.2/src/core/udp.c:661:52: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+               ("udp_bind: bound to %"U16_F".%"U16_F".%"U16_F".%"U16_F", port %"U16_F"\n",
+                                                    ^
+lib/lwip_v1.3.2/src/core/udp.c:661:61: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+               ("udp_bind: bound to %"U16_F".%"U16_F".%"U16_F".%"U16_F", port %"U16_F"\n",
+                                                             ^
+lib/lwip_v1.3.2/src/core/udp.c:661:70: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+               ("udp_bind: bound to %"U16_F".%"U16_F".%"U16_F".%"U16_F", port %"U16_F"\n",
+                                                                      ^
+lib/lwip_v1.3.2/src/core/udp.c:719:16: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+               ("udp_connect: connected to %"U16_F".%"U16_F".%"U16_F".%"U16_F",port %"U16_F"\n",
+                ^
+lib/lwip_v1.3.2/src/core/udp.c:719:50: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+               ("udp_connect: connected to %"U16_F".%"U16_F".%"U16_F".%"U16_F",port %"U16_F"\n",
+                                                  ^
+lib/lwip_v1.3.2/src/core/udp.c:719:59: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+               ("udp_connect: connected to %"U16_F".%"U16_F".%"U16_F".%"U16_F",port %"U16_F"\n",
+                                                           ^
+lib/lwip_v1.3.2/src/core/udp.c:719:68: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+               ("udp_connect: connected to %"U16_F".%"U16_F".%"U16_F".%"U16_F",port %"U16_F"\n",
+                                                                    ^
+lib/lwip_v1.3.2/src/core/udp.c:719:77: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+               ("udp_connect: connected to %"U16_F".%"U16_F".%"U16_F".%"U16_F",port %"U16_F"\n",
+                                                                             ^
+lib/lwip_v1.3.2/src/core/udp.c: In function 'void udp_input(pbuf*, netif*)':
+lib/lwip_v1.3.2/src/core/udp.c:99:14: warning: invalid conversion from 'void*' to 'ip_hdr*' [-fpermissive]
+   iphdr = p->payload;
+              ^
+lib/lwip_v1.3.2/src/core/udp.c: In function 'err_t udp_sendto_if(udp_pcb*, pbuf*, ip_addr*, u16_t, netif*)':
+lib/lwip_v1.3.2/src/core/udp.c:460:15: warning: invalid conversion from 'void*' to 'udp_hdr*' [-fpermissive]
+   udphdr = q->payload;
+               ^
+lib/lwip_v1.3.2/src/core/udp.c: In function 'udp_pcb* udp_new()':
+lib/lwip_v1.3.2/src/core/udp.c:815:20: warning: invalid conversion from 'void*' to 'udp_pcb*' [-fpermissive]
+   pcb = memp_malloc(MEMP_UDP_PCB);
+                    ^
+In file included from lib/lwip_v1.3.2/src/include/ipv4/lwip/ip.h:39:0,
+                 from lib/lwip_v1.3.2/src/netif/etharp.c:51:
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:23: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                       ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                               ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                        ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                                 ^
+lib/lwip_v1.3.2/src/netif/etharp.c:178:34: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(ETHARP_DEBUG, ("etharp_timer: expired %s entry %"U16_F".\n",
+                                  ^
+lib/lwip_v1.3.2/src/netif/etharp.c:187:36: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         LWIP_DEBUGF(ETHARP_DEBUG, ("etharp_timer: freeing entry %"U16_F", packet queue %p.\n", (u16_t)i, (void *)(arp_table[i].q)));
+                                    ^
+lib/lwip_v1.3.2/src/netif/etharp.c:290:34: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(ETHARP_DEBUG, ("find_entry: found empty entry %"U16_F"\n", (u16_t)i));
+                                  ^
+lib/lwip_v1.3.2/src/netif/etharp.c:298:53: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         LWIP_DEBUGF(ETHARP_DEBUG | LWIP_DBG_TRACE, ("find_entry: found matching pending entry %"U16_F"\n", (u16_t)i));
+                                                     ^
+lib/lwip_v1.3.2/src/netif/etharp.c:326:53: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         LWIP_DEBUGF(ETHARP_DEBUG | LWIP_DBG_TRACE, ("find_entry: found matching stable entry %"U16_F"\n", (u16_t)i));
+                                                     ^
+lib/lwip_v1.3.2/src/netif/etharp.c:363:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(ETHARP_DEBUG | LWIP_DBG_TRACE, ("find_entry: selecting empty entry %"U16_F"\n", (u16_t)i));
+                                                 ^
+lib/lwip_v1.3.2/src/netif/etharp.c:369:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(ETHARP_DEBUG | LWIP_DBG_TRACE, ("find_entry: selecting oldest stable entry %"U16_F"\n", (u16_t)i));
+                                                 ^
+lib/lwip_v1.3.2/src/netif/etharp.c:378:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(ETHARP_DEBUG | LWIP_DBG_TRACE, ("find_entry: selecting oldest pending entry %"U16_F" (without queue)\n", (u16_t)i));
+                                                 ^
+lib/lwip_v1.3.2/src/netif/etharp.c:384:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(ETHARP_DEBUG | LWIP_DBG_TRACE, ("find_entry: selecting oldest pending entry %"U16_F", freeing packet queue %p\n", (u16_t)i, (void *)(arp_table[i].q)));
+                                                 ^
+lib/lwip_v1.3.2/src/netif/etharp.c:473:47: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(ETHARP_DEBUG | LWIP_DBG_TRACE, ("update_arp_entry: %"U16_F".%"U16_F".%"U16_F".%"U16_F" - %02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F"\n",
+                                               ^
+lib/lwip_v1.3.2/src/netif/etharp.c:473:73: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(ETHARP_DEBUG | LWIP_DBG_TRACE, ("update_arp_entry: %"U16_F".%"U16_F".%"U16_F".%"U16_F" - %02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F"\n",
+                                                                         ^
+lib/lwip_v1.3.2/src/netif/etharp.c:473:82: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(ETHARP_DEBUG | LWIP_DBG_TRACE, ("update_arp_entry: %"U16_F".%"U16_F".%"U16_F".%"U16_F" - %02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F"\n",
+                                                                                  ^
+lib/lwip_v1.3.2/src/netif/etharp.c:473:91: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(ETHARP_DEBUG | LWIP_DBG_TRACE, ("update_arp_entry: %"U16_F".%"U16_F".%"U16_F".%"U16_F" - %02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F"\n",
+                                                                                           ^
+lib/lwip_v1.3.2/src/netif/etharp.c:473:100: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(ETHARP_DEBUG | LWIP_DBG_TRACE, ("update_arp_entry: %"U16_F".%"U16_F".%"U16_F".%"U16_F" - %02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F"\n",
+                                                                                                    ^
+lib/lwip_v1.3.2/src/netif/etharp.c:473:113: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(ETHARP_DEBUG | LWIP_DBG_TRACE, ("update_arp_entry: %"U16_F".%"U16_F".%"U16_F".%"U16_F" - %02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F"\n",
+                                                                                                                 ^
+lib/lwip_v1.3.2/src/netif/etharp.c:473:124: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(ETHARP_DEBUG | LWIP_DBG_TRACE, ("update_arp_entry: %"U16_F".%"U16_F".%"U16_F".%"U16_F" - %02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F"\n",
+                                                                                                                            ^
+lib/lwip_v1.3.2/src/netif/etharp.c:473:135: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(ETHARP_DEBUG | LWIP_DBG_TRACE, ("update_arp_entry: %"U16_F".%"U16_F".%"U16_F".%"U16_F" - %02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F"\n",
+                                                                                                                                       ^
+lib/lwip_v1.3.2/src/netif/etharp.c:473:146: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(ETHARP_DEBUG | LWIP_DBG_TRACE, ("update_arp_entry: %"U16_F".%"U16_F".%"U16_F".%"U16_F" - %02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F"\n",
+                                                                                                                                                  ^
+lib/lwip_v1.3.2/src/netif/etharp.c:473:157: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(ETHARP_DEBUG | LWIP_DBG_TRACE, ("update_arp_entry: %"U16_F".%"U16_F".%"U16_F".%"U16_F" - %02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F"\n",
+                                                                                                                                                             ^
+lib/lwip_v1.3.2/src/netif/etharp.c:502:47: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(ETHARP_DEBUG | LWIP_DBG_TRACE, ("update_arp_entry: updating stable entry %"S16_F"\n", (s16_t)i));
+                                               ^
+lib/lwip_v1.3.2/src/netif/etharp.c:643:8: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       ("etharp_arp_input: packet dropped, too short (%"S16_F"/%"S16_F")\n", p->tot_len,
+        ^
+lib/lwip_v1.3.2/src/netif/etharp.c:643:61: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       ("etharp_arp_input: packet dropped, too short (%"S16_F"/%"S16_F")\n", p->tot_len,
+                                                             ^
+lib/lwip_v1.3.2/src/netif/etharp.c:665:8: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       ("etharp_arp_input: packet dropped, wrong hw type, hwlen, proto, protolen or ethernet type (%"U16_F"/%"U16_F"/%"U16_F"/%"U16_F"/%"U16_F")\n",
+        ^
+lib/lwip_v1.3.2/src/netif/etharp.c:665:106: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       ("etharp_arp_input: packet dropped, wrong hw type, hwlen, proto, protolen or ethernet type (%"U16_F"/%"U16_F"/%"U16_F"/%"U16_F"/%"U16_F")\n",
+                                                                                                          ^
+lib/lwip_v1.3.2/src/netif/etharp.c:665:115: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       ("etharp_arp_input: packet dropped, wrong hw type, hwlen, proto, protolen or ethernet type (%"U16_F"/%"U16_F"/%"U16_F"/%"U16_F"/%"U16_F")\n",
+                                                                                                                   ^
+lib/lwip_v1.3.2/src/netif/etharp.c:665:124: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       ("etharp_arp_input: packet dropped, wrong hw type, hwlen, proto, protolen or ethernet type (%"U16_F"/%"U16_F"/%"U16_F"/%"U16_F"/%"U16_F")\n",
+                                                                                                                            ^
+lib/lwip_v1.3.2/src/netif/etharp.c:665:133: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       ("etharp_arp_input: packet dropped, wrong hw type, hwlen, proto, protolen or ethernet type (%"U16_F"/%"U16_F"/%"U16_F"/%"U16_F"/%"U16_F")\n",
+                                                                                                                                     ^
+lib/lwip_v1.3.2/src/netif/etharp.c:774:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(ETHARP_DEBUG | LWIP_DBG_TRACE, ("etharp_arp_input: ARP unknown opcode type %"S16_F"\n", htons(hdr->opcode)));
+                                                 ^
+lib/lwip_v1.3.2/src/netif/etharp.c:1004:55: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+           LWIP_DEBUGF(ETHARP_DEBUG | LWIP_DBG_TRACE, ("etharp_query: queued packet %p on ARP entry %"S16_F"\n", (void *)q, (s16_t)i));
+                                                       ^
+lib/lwip_v1.3.2/src/netif/etharp.c: In function 'err_t etharp_send_ip(netif*, pbuf*, eth_addr*, eth_addr*)':
+lib/lwip_v1.3.2/src/netif/etharp.c:430:31: warning: invalid conversion from 'void*' to 'eth_hdr*' [-fpermissive]
+   struct eth_hdr *ethhdr = p->payload;
+                               ^
+lib/lwip_v1.3.2/src/netif/etharp.c: In function 'void etharp_ip_input(netif*, pbuf*)':
+lib/lwip_v1.3.2/src/netif/etharp.c:587:15: warning: invalid conversion from 'void*' to 'eth_hdr*' [-fpermissive]
+   ethhdr = p->payload;
+               ^
+lib/lwip_v1.3.2/src/netif/etharp.c: In function 'void etharp_arp_input(netif*, eth_addr*, pbuf*)':
+lib/lwip_v1.3.2/src/netif/etharp.c:651:15: warning: invalid conversion from 'void*' to 'eth_hdr*' [-fpermissive]
+   ethhdr = p->payload;
+               ^
+lib/lwip_v1.3.2/src/netif/etharp.c: In function 'err_t etharp_query(netif*, ip_addr*, pbuf*)':
+lib/lwip_v1.3.2/src/netif/etharp.c:988:32: warning: invalid conversion from 'void*' to 'etharp_q_entry*' [-fpermissive]
+         new_entry = memp_malloc(MEMP_ARP_QUEUE);
+                                ^
+lib/lwip_v1.3.2/src/netif/etharp.c: In function 'err_t etharp_raw(netif*, const eth_addr*, const eth_addr*, const eth_addr*, const ip_addr*, const eth_addr*, const ip_addr*, u16_t)':
+lib/lwip_v1.3.2/src/netif/etharp.c:1073:15: warning: invalid conversion from 'void*' to 'eth_hdr*' [-fpermissive]
+   ethhdr = p->payload;
+               ^
+lib/lwip_v1.3.2/src/netif/etharp.c: In function 'err_t ethernet_input(pbuf*, netif*)':
+lib/lwip_v1.3.2/src/netif/etharp.c:1153:15: warning: invalid conversion from 'void*' to 'eth_hdr*' [-fpermissive]
+   ethhdr = p->payload;
+               ^
+In file included from lib/lwip_v1.3.2/src/include/lwip/netif.h:41:0,
+                 from lib/lwip_v1.3.2/src/include/netif/slipif.h:37,
+                 from lib/lwip_v1.3.2/src/netif/slipif.c:45:
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:23: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                       ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                               ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                        ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                                 ^
+In file included from lib/lwip_v1.3.2/src/include/lwip/netif.h:41:0,
+                 from lib/lwip_v1.3.2/src/include/lwip/udp.h:40,
+                 from lib/lwip_v1.3.2/src/core/ipv4/autoip.c:70:
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:23: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                       ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                               ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                        ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                                 ^
+lib/lwip_v1.3.2/src/core/ipv4/autoip.c:196:6: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     ("autoip_create_addr(): tried_llipaddr=%"U16_F", 0x%08"X32_F"\n",
+      ^
+lib/lwip_v1.3.2/src/core/ipv4/autoip.c:196:51: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     ("autoip_create_addr(): tried_llipaddr=%"U16_F", 0x%08"X32_F"\n",
+                                                   ^
+lib/lwip_v1.3.2/src/core/ipv4/autoip.c:238:6: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     ("autoip_bind(netif=%p) %c%c%"U16_F" 0x%08"X32_F"\n",
+      ^
+lib/lwip_v1.3.2/src/core/ipv4/autoip.c:238:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     ("autoip_bind(netif=%p) %c%c%"U16_F" 0x%08"X32_F"\n",
+                                        ^
+lib/lwip_v1.3.2/src/core/ipv4/autoip.c:277:6: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     ("autoip_start(netif=%p) %c%c%"U16_F"\n", (void*)netif, netif->name[0],
+      ^
+lib/lwip_v1.3.2/src/core/ipv4/autoip.c:376:10: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         ("autoip_tmr() AutoIP-State: %"U16_F", ttw=%"U16_F"\n",
+          ^
+lib/lwip_v1.3.2/src/core/ipv4/autoip.c:376:45: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         ("autoip_tmr() AutoIP-State: %"U16_F", ttw=%"U16_F"\n",
+                                             ^
+lib/lwip_v1.3.2/src/core/ipv4/autoip.c: In function 'err_t autoip_start(netif*)':
+lib/lwip_v1.3.2/src/core/ipv4/autoip.c:283:24: warning: invalid conversion from 'void*' to 'autoip*' [-fpermissive]
+     autoip = mem_malloc(sizeof(struct autoip));
+                        ^
+In file included from lib/lwip_v1.3.2/src/include/ipv4/lwip/icmp.h:37:0,
+                 from lib/lwip_v1.3.2/src/core/ipv4/icmp.c:46:
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:23: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                       ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                               ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                        ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                                 ^
+lib/lwip_v1.3.2/src/core/ipv4/icmp.c:96:30: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(ICMP_DEBUG, ("icmp_input: short ICMP (%"U16_F" bytes) received\n", p->tot_len));
+                              ^
+lib/lwip_v1.3.2/src/core/ipv4/icmp.c:233:30: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(ICMP_DEBUG, ("icmp_input: ICMP type %"S16_F" code %"S16_F" not supported.\n", 
+                              ^
+lib/lwip_v1.3.2/src/core/ipv4/icmp.c:233:60: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(ICMP_DEBUG, ("icmp_input: ICMP type %"S16_F" code %"S16_F" not supported.\n", 
+                                                            ^
+lib/lwip_v1.3.2/src/core/ipv4/icmp.c: In function 'void icmp_input(pbuf*, netif*)':
+lib/lwip_v1.3.2/src/core/ipv4/icmp.c:93:14: warning: invalid conversion from 'void*' to 'ip_hdr*' [-fpermissive]
+   iphdr = p->payload;
+              ^
+lib/lwip_v1.3.2/src/core/ipv4/icmp.c:166:18: warning: invalid conversion from 'void*' to 'ip_hdr*' [-fpermissive]
+       iphdr = r->payload;
+                  ^
+lib/lwip_v1.3.2/src/core/ipv4/icmp.c:187:16: warning: invalid conversion from 'void*' to 'icmp_echo_hdr*' [-fpermissive]
+     iecho = p->payload;
+                ^
+lib/lwip_v1.3.2/src/core/ipv4/icmp.c: In function 'void icmp_send_response(pbuf*, u8_t, u8_t)':
+lib/lwip_v1.3.2/src/core/ipv4/icmp.c:311:14: warning: invalid conversion from 'void*' to 'ip_hdr*' [-fpermissive]
+   iphdr = p->payload;
+              ^
+lib/lwip_v1.3.2/src/core/ipv4/icmp.c:318:16: warning: invalid conversion from 'void*' to 'icmp_echo_hdr*' [-fpermissive]
+   icmphdr = q->payload;
+                ^
+In file included from lib/lwip_v1.3.2/src/include/ipv4/lwip/inet_chksum.h:38:0,
+                 from lib/lwip_v1.3.2/src/core/ipv4/inet_chksum.c:41:
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:23: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                       ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                               ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                        ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                                 ^
+lib/lwip_v1.3.2/src/core/ipv4/inet_chksum.c:323:28: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(INET_DEBUG, ("inet_chksum_pseudo(): pbuf chain lwip_chksum()=%"X32_F"\n", acc));
+                            ^
+In file included from lib/lwip_v1.3.2/src/core/ipv4/ip_addr.c:40:0:
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:23: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                       ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                               ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                        ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                                 ^
+In file included from lib/lwip_v1.3.2/src/include/ipv4/lwip/ip.h:39:0,
+                 from lib/lwip_v1.3.2/src/core/ipv4/ip.c:42:
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:23: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                       ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                               ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                        ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                                 ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:97:53: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(IP_DEBUG | LWIP_DBG_LEVEL_SERIOUS, ("ip_route: No route to 0x%"X32_F"\n", dest->addr));
+                                                     ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:205:53: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(IP_DEBUG | LWIP_DBG_LEVEL_WARNING, ("IP packet dropped due to bad version number %"U16_F"\n", IPH_V(iphdr)));
+                                                     ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:225:10: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         ("IP header (len %"U16_F") does not fit in first pbuf (len %"U16_F"), IP packet dropped.\n",
+          ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:225:33: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         ("IP header (len %"U16_F") does not fit in first pbuf (len %"U16_F"), IP packet dropped.\n",
+                                 ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:230:10: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         ("IP (len %"U16_F") is longer than pbuf (len %"U16_F"), IP packet dropped.\n",
+          ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:230:26: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+         ("IP (len %"U16_F") is longer than pbuf (len %"U16_F"), IP packet dropped.\n",
+                          ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:277:30: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(IP_DEBUG, ("ip_input: iphdr->dest 0x%"X32_F" netif->ip_addr 0x%"X32_F" (0x%"X32_F", 0x%"X32_F", 0x%"X32_F")\n",
+                              ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:277:62: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(IP_DEBUG, ("ip_input: iphdr->dest 0x%"X32_F" netif->ip_addr 0x%"X32_F" (0x%"X32_F", 0x%"X32_F", 0x%"X32_F")\n",
+                                                              ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:277:88: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(IP_DEBUG, ("ip_input: iphdr->dest 0x%"X32_F" netif->ip_addr 0x%"X32_F" (0x%"X32_F", 0x%"X32_F", 0x%"X32_F")\n",
+                                                                                        ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:277:100: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(IP_DEBUG, ("ip_input: iphdr->dest 0x%"X32_F" netif->ip_addr 0x%"X32_F" (0x%"X32_F", 0x%"X32_F", 0x%"X32_F")\n",
+                                                                                                    ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:277:112: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(IP_DEBUG, ("ip_input: iphdr->dest 0x%"X32_F" netif->ip_addr 0x%"X32_F" (0x%"X32_F", 0x%"X32_F", 0x%"X32_F")\n",
+                                                                                                                ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:315:47: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(IP_DEBUG | LWIP_DBG_TRACE, ("ip_input: UDP packet to DHCP client port %"U16_F"\n",
+                                               ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:385:28: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(IP_DEBUG, ("IP packet is a fragment (id=0x%04"X16_F" tot_len=%"U16_F" len=%"U16_F" MF=%"U16_F" offset=%"U16_F"), calling ip_reass()\n",
+                            ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:385:68: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(IP_DEBUG, ("IP packet is a fragment (id=0x%04"X16_F" tot_len=%"U16_F" len=%"U16_F" MF=%"U16_F" offset=%"U16_F"), calling ip_reass()\n",
+                                                                    ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:385:85: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(IP_DEBUG, ("IP packet is a fragment (id=0x%04"X16_F" tot_len=%"U16_F" len=%"U16_F" MF=%"U16_F" offset=%"U16_F"), calling ip_reass()\n",
+                                                                                     ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:385:98: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(IP_DEBUG, ("IP packet is a fragment (id=0x%04"X16_F" tot_len=%"U16_F" len=%"U16_F" MF=%"U16_F" offset=%"U16_F"), calling ip_reass()\n",
+                                                                                                  ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:385:110: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(IP_DEBUG, ("IP packet is a fragment (id=0x%04"X16_F" tot_len=%"U16_F" len=%"U16_F" MF=%"U16_F" offset=%"U16_F"), calling ip_reass()\n",
+                                                                                                              ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:427:26: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(IP_DEBUG, ("ip_input: p->len %"U16_F" p->tot_len %"U16_F"\n", p->len, p->tot_len));
+                          ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:427:51: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(IP_DEBUG, ("ip_input: p->len %"U16_F" p->tot_len %"U16_F"\n", p->len, p->tot_len));
+                                                   ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:476:55: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(IP_DEBUG | LWIP_DBG_LEVEL_SERIOUS, ("Unsupported transport protocol %"U16_F"\n", IPH_PROTO(iphdr)));
+                                                       ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:605:26: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(IP_DEBUG, ("ip_output_if: %c%c%"U16_F"\n", netif->name[0], netif->name[1], netif->num));
+                          ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:650:28: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+     LWIP_DEBUGF(IP_DEBUG, ("ip_output: No route to 0x%"X32_F"\n", dest->addr));
+                            ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c: In function 'err_t ip_input(pbuf*, netif*)':
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:203:14: warning: invalid conversion from 'void*' to 'ip_hdr*' [-fpermissive]
+   iphdr = p->payload;
+              ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:393:16: warning: invalid conversion from 'void*' to 'ip_hdr*' [-fpermissive]
+     iphdr = p->payload;
+                ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c: In function 'err_t ip_output_if(pbuf*, ip_addr*, ip_addr*, u8_t, u8_t, u8_t, netif*)':
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:572:16: warning: invalid conversion from 'void*' to 'ip_hdr*' [-fpermissive]
+     iphdr = p->payload;
+                ^
+lib/lwip_v1.3.2/src/core/ipv4/ip.c:599:16: warning: invalid conversion from 'void*' to 'ip_hdr*' [-fpermissive]
+     iphdr = p->payload;
+                ^
+In file included from lib/lwip_v1.3.2/src/include/lwip/netif.h:41:0,
+                 from lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_frag.h:39,
+                 from lib/lwip_v1.3.2/src/core/ipv4/ip_frag.c:42:
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:23: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                       ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                               ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                        ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                                 ^
+lib/lwip_v1.3.2/src/core/ipv4/ip_frag.c:130:36: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(IP_REASS_DEBUG, ("ip_reass_tmr: timer dec %"U16_F"\n",(u16_t)r->timer));
+                                    ^
+lib/lwip_v1.3.2/src/core/ipv4/ip_frag.c:518:36: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+       LWIP_DEBUGF(IP_REASS_DEBUG, ("ip_reass: matching previous fragment ID=%"X16_F"\n",
+                                    ^
+lib/lwip_v1.3.2/src/core/ipv4/ip_frag.c:555:7: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+      ("ip_reass: last fragment seen, total len %"S16_F"\n",
+       ^
+lib/lwip_v1.3.2/src/core/ipv4/ip_frag.c: In function 'ip_reassdata* ip_reass_enqueue_new_datagram(ip_hdr*, int)':
+lib/lwip_v1.3.2/src/core/ipv4/ip_frag.c:266:20: warning: invalid conversion from 'void*' to 'ip_reassdata*' [-fpermissive]
+   ipr = memp_malloc(MEMP_REASSDATA);
+                    ^
+lib/lwip_v1.3.2/src/core/ipv4/ip_frag.c:270:24: warning: invalid conversion from 'void*' to 'ip_reassdata*' [-fpermissive]
+       ipr = memp_malloc(MEMP_REASSDATA);
+                        ^
+lib/lwip_v1.3.2/src/core/ipv4/ip_frag.c: In function 'err_t ip_frag(pbuf*, netif*, ip_addr*)':
+lib/lwip_v1.3.2/src/core/ipv4/ip_frag.c:665:19: warning: invalid conversion from 'void*' to 'ip_hdr*' [-fpermissive]
+   iphdr = rambuf->payload;
+                   ^
+In file included from lib/lwip_v1.3.2/src/include/netif/etharp.h:43:0,
+                 from lib/lwip_v1.3.2/port/STM32F4x7/Standalone/ethernetif.c:41:
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:23: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                       ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:31: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                               ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:40: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                        ^
+lib/lwip_v1.3.2/src/include/ipv4/lwip/ip_addr.h:147:49: warning: invalid suffix on literal; C++11 requires a space between literal and string macro [-Wliteral-suffix]
+   LWIP_DEBUGF(debug, ("%"U16_F".%"U16_F".%"U16_F".%"U16_F,              \
+                                                 ^
+lib/stm32/STM32F4x7_ETH_Driver/src/stm32f4x7_eth.c: In function 'uint32_t ETH_Init(ETH_InitTypeDef*, uint16_t)':
+lib/stm32/STM32F4x7_ETH_Driver/src/stm32f4x7_eth.c:293:17: warning: unused variable 'i' [-Wunused-variable]
+   __IO uint32_t i = 0;
+                 ^
+make: *** [nrf-gateway.elf] Error 1
